@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="neonBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00D4FF" />
+      <stop offset="50%" stop-color="#A855F7" />
+      <stop offset="100%" stop-color="#FF2A5F" />
+    </linearGradient>
+    <linearGradient id="neonV" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00D4FF" />
+      <stop offset="55%" stop-color="#C084FC" />
+      <stop offset="100%" stop-color="#FF2A5F" />
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="2.5" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Cosmic Dark Background -->
+  <rect x="3" y="3" width="58" height="58" rx="16" fill="#070514" stroke="url(#neonBorder)" stroke-width="3.5" />
+
+  <!-- Subtle Inner Glow Ring -->
+  <rect x="7" y="7" width="50" height="50" rx="12" fill="none" stroke="#A855F7" stroke-opacity="0.25" stroke-width="1.5" />
+
+  <!-- Neon V for Vintern -->
+  <path
+    d="M18 19 L32 47 L46 19"
+    fill="none"
+    stroke="url(#neonV)"
+    stroke-width="7.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    filter="url(#glow)"
+  />
+
+  <!-- Small Neon Spark Dot -->
+  <circle cx="48" cy="15" r="2.6" fill="#00D4FF" filter="url(#glow)" />
+</svg>
