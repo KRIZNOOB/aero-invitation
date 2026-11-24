@@ -9,10 +9,14 @@ import {
   CheckCircle2,
   Clock,
   Copy,
+  Droplets,
   ExternalLink,
+  Footprints,
   MailOpen,
   MapPin,
+  ShieldCheck,
   Shirt,
+  Ticket,
   XCircle,
 } from "lucide-react";
 import { buildGoogleCalendarUrl, EVENT_CONFIG } from "@/config/event";
@@ -57,7 +61,7 @@ export default function InvitationClient({ guestName }: InvitationClientProps) {
   const [opened, setOpened] = useState(false);
   const [copiedAddress, setCopiedAddress] = useState(false);
 
-  const { internGroup, event, rules, timeline, rsvpCopy } = EVENT_CONFIG;
+  const { internGroup, event, rules, perks, timeline, rsvpCopy } = EVENT_CONFIG;
   const calendarUrl = buildGoogleCalendarUrl();
 
   function handleOpenInvitation() {
@@ -454,6 +458,46 @@ export default function InvitationClient({ guestName }: InvitationClientProps) {
                   </li>
                 ))}
               </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* WHAT WILL YOU GET SECTION */}
+        <section id="perks" className="scroll-mt-24">
+          <div className="neon-card-purple rounded-[2rem] p-6 sm:p-10 text-center relative overflow-hidden">
+            <div className="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2 h-48 w-72 rounded-full bg-[#00D4FF]/20 blur-3xl" />
+
+            <div className="relative max-w-2xl mx-auto">
+              <span className="inline-block rounded-full border border-[#00D4FF]/65 bg-[#00D4FF]/15 text-[#7DE8FF] px-4 py-1 text-xs font-extrabold uppercase tracking-wider shadow-[0_0_16px_rgba(0,212,255,0.3)]">
+                {perks.badge}
+              </span>
+              <h2 className="mt-3 font-display text-3xl sm:text-4xl font-extrabold text-white neon-text-blue">
+                {perks.heading}
+              </h2>
+
+              <div className="mt-7 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+                {perks.items.map((perk, idx) => {
+                  const icons = [Ticket, Footprints, ShieldCheck, Droplets];
+                  const Icon = icons[idx] ?? Ticket;
+                  const cardClasses = [
+                    "neon-card-blue text-[#7DE8FF]",
+                    "neon-card-purple text-[#E9D5FF]",
+                    "neon-card-red text-[#FF85A5]",
+                    "neon-card-blue text-[#7DE8FF]",
+                  ];
+                  return (
+                    <div
+                      key={perk.label}
+                      className={`${cardClasses[idx % cardClasses.length]} rounded-2xl p-4 flex flex-col items-center justify-center gap-2.5 text-center`}
+                    >
+                      <Icon className="h-6 w-6 shrink-0" />
+                      <span className="font-display text-sm font-extrabold text-white leading-snug">
+                        {perk.label}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </section>

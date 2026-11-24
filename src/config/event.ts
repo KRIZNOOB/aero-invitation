@@ -82,6 +82,18 @@ export const EVENT_CONFIG = {
     ] as RuleItem[],
   },
 
+  // === WHAT WILL YOU GET ===
+  perks: {
+    badge: "INCLUDED PERKS",
+    heading: "What Will You Get?",
+    items: [
+      { label: "Unlimited Pass", color: "blue" as const },
+      { label: "Grip Socks", color: "purple" as const },
+      { label: "Insurance", color: "red" as const },
+      { label: "Free-Flow Mineral Water", color: "blue" as const },
+    ],
+  },
+
   // === TIMELINE / RUNDOWN ===
   timeline: {
     heading: "WHAT'S THE DAY LOOKING LIKE?",
