@@ -3,8 +3,8 @@ import { EVENT_CONFIG } from "@/config/event";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: `Farewell Party ${EVENT_CONFIG.internGroup.name} | Undangan Resmi`,
-  description: EVENT_CONFIG.event.subtitle,
+  title: "Viskal Outing Invitation",
+  description: EVENT_CONFIG.event.heroParagraphs[0],
 };
 
 export default function RootLayout({

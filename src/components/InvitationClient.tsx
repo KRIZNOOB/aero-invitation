@@ -98,14 +98,14 @@ export default function InvitationClient({ guestName }: InvitationClientProps) {
       <>
         <ContinuousConfetti />
         <main className="min-h-screen flex items-center justify-center p-4 sm:p-6 relative overflow-hidden">
-          <div className="hidden sm:block absolute top-12 left-12 neon-card-blue rounded-2xl px-4 py-2 font-hand text-xl font-bold text-[#7DE8FF] neon-text-blue animate-float">
+          <div className="hidden lg:block absolute top-12 left-12 neon-card-blue rounded-2xl px-4 py-2 font-hand text-xl font-bold text-[#7DE8FF] neon-text-blue animate-float">
             Save the Date!
           </div>
-          <div className="hidden sm:block absolute bottom-14 right-14 neon-card-red rounded-2xl px-4 py-2 font-hand text-xl font-bold text-[#FF85A5] neon-text-red animate-float-alt">
+          <div className="hidden lg:block absolute bottom-14 right-14 neon-card-red rounded-2xl px-4 py-2 font-hand text-xl font-bold text-[#FF85A5] neon-text-red animate-float-alt">
             Play &amp; Good Vibes
           </div>
-          <div className="hidden md:block absolute top-24 right-20 neon-card-purple rounded-full px-4 py-1.5 text-xs font-extrabold text-[#D8B4FE] rotate-6">
-            #FarewellVintern
+          <div className="hidden lg:block absolute top-16 right-16 neon-card-purple rounded-full px-4 py-1.5 text-xs font-extrabold text-[#D8B4FE] rotate-3">
+            #ViskalOuting
           </div>
 
           <div className="neon-card rounded-[2rem] max-w-lg w-full p-7 sm:p-10 text-center relative">
@@ -116,22 +116,24 @@ export default function InvitationClient({ guestName }: InvitationClientProps) {
 
             <div className="mt-6">
               <p className="font-hand text-2xl sm:text-3xl font-bold text-[#FF4D7D] neon-text-red -rotate-2">
-                You&apos;re Invited!
+                {event.coverIntro}
               </p>
-              <h1 className="mt-2 font-display text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.08] text-white">
-                Farewell Party{" "}
-                <span className="inline-block rounded-xl border border-[#00D4FF]/70 bg-gradient-to-r from-[#00D4FF]/25 via-[#A855F7]/30 to-[#FF2A5F]/25 px-3 py-0.5 text-[#7DE8FF] neon-text-blue shadow-[0_0_24px_rgba(0,212,255,0.35)] rotate-1 mt-1">
-                  {internGroup.name}!
-                </span>
+              <h1 className="mt-1.5 font-display text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.1] text-white">
+                {event.coverTitle}
               </h1>
+              <div className="mt-3">
+                <span className="inline-block rounded-xl border border-[#00D4FF]/70 bg-gradient-to-r from-[#00D4FF]/25 via-[#A855F7]/30 to-[#FF2A5F]/25 px-4 py-1 font-display text-lg sm:text-xl font-extrabold text-[#7DE8FF] neon-text-blue shadow-[0_0_24px_rgba(0,212,255,0.35)]">
+                  {internGroup.editionLabel}
+                </span>
+              </div>
             </div>
 
             <div className="mt-6 rounded-2xl border border-dashed border-[#A855F7]/60 bg-[#09061A]/80 p-4">
               <p className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                Undangan Spesial Untuk
+                {event.coverExclusivelyFor}
               </p>
               <p className="mt-1 font-display text-xl sm:text-2xl font-extrabold text-white neon-text-purple">
-                {guestName ? guestName : `Teman-Teman ${event.hostTeam}`}
+                {guestName ? guestName : event.coverDefaultGuest}
               </p>
             </div>
 
@@ -141,7 +143,7 @@ export default function InvitationClient({ guestName }: InvitationClientProps) {
               className="neon-btn-red mt-7 w-full inline-flex items-center justify-center gap-2.5 rounded-2xl px-6 py-4 text-base sm:text-lg font-extrabold text-white cursor-pointer"
             >
               <MailOpen className="h-5 w-5" />
-              Buka Undangan
+              {event.coverCta}
             </button>
 
             <p className="mt-4 text-xs font-medium text-slate-400">
@@ -164,9 +166,9 @@ export default function InvitationClient({ guestName }: InvitationClientProps) {
             type="button"
             onClick={fireCelebration}
             className="inline-flex items-center gap-1.5 rounded-xl border border-[#00D4FF]/60 bg-[#00D4FF]/15 px-3 py-1.5 text-xs sm:text-sm font-extrabold text-[#7DE8FF] shadow-[0_0_14px_rgba(0,212,255,0.3)] cursor-pointer hover:scale-105 transition-transform"
-            title="Klik untuk confetti!"
+            title="Click for confetti!"
           >
-            Farewell {internGroup.name}
+            Viskal Outing
           </button>
 
           <div className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm font-bold text-slate-200">
@@ -174,19 +176,19 @@ export default function InvitationClient({ guestName }: InvitationClientProps) {
               href="#detail"
               className="rounded-lg px-2 py-1.5 hover:text-[#00D4FF] transition-colors"
             >
-              Acara
+              Details
             </a>
             <a
               href="#rules"
               className="rounded-lg px-2 py-1.5 hover:text-[#C084FC] transition-colors"
             >
-              Info
+              Briefing
             </a>
             <a
               href="#rundown"
               className="hidden sm:inline-block rounded-lg px-2 py-1.5 hover:text-[#FF4D7D] transition-colors"
             >
-              Rundown
+              Timeline
             </a>
             <a
               href="#rsvp"
@@ -209,7 +211,7 @@ export default function InvitationClient({ guestName }: InvitationClientProps) {
             <div className="max-w-2xl relative">
               {guestName && (
                 <div className="inline-flex items-center gap-2 rounded-full border border-[#FF2A5F]/50 bg-[#FF2A5F]/15 px-3.5 py-1 text-xs sm:text-sm font-bold text-slate-100 mb-4 shadow-[0_0_14px_rgba(255,42,95,0.25)]">
-                  Hai <span className="text-[#FF85A5]">{guestName}</span>, kamu diundang!
+                  Hey <span className="text-[#FF85A5]">{guestName}</span>, you&apos;re invited!
                 </div>
               )}
 
@@ -223,34 +225,29 @@ export default function InvitationClient({ guestName }: InvitationClientProps) {
                 </span>
               </div>
 
-              <h1 className="font-display text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.05] text-white">
-                {event.title}{" "}
-                <span className="inline-block rounded-2xl border border-[#FF2A5F]/70 bg-gradient-to-r from-[#FF2A5F] via-[#A855F7] to-[#00D4FF] text-white px-3.5 py-0.5 -rotate-1 mt-1 shadow-[0_0_28px_rgba(255,42,95,0.5)]">
-                  {internGroup.name}!
+              <h1 className="font-display text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.08] text-white">
+                {event.heroTitle}{" "}
+                <span className="inline-block rounded-2xl border border-[#FF2A5F]/70 bg-gradient-to-r from-[#FF2A5F] via-[#A855F7] to-[#00D4FF] text-white px-3.5 py-0.5 -rotate-1 mt-1.5 shadow-[0_0_28px_rgba(255,42,95,0.5)]">
+                  {event.heroHighlight}
                 </span>
               </h1>
 
-              <p className="mt-5 text-base sm:text-lg text-slate-300 font-medium leading-relaxed">
-                {event.subtitle}
-              </p>
-
-              {/* Quote box */}
-              <div className="mt-6 rounded-2xl border border-[#A855F7]/45 bg-[#09061A]/85 p-4 sm:p-5 inline-block max-w-xl shadow-[0_0_20px_rgba(168,85,247,0.18)]">
-                <p className="font-hand text-xl sm:text-2xl font-bold text-[#E9D5FF]">
-                  &ldquo;{internGroup.quote}&rdquo;
-                </p>
-                <p className="mt-1 text-xs font-bold uppercase tracking-wider text-[#00D4FF]">
-                  — {internGroup.subtitle}
+              <div className="mt-6 space-y-4 text-base sm:text-lg text-slate-300 font-medium leading-relaxed">
+                {event.heroParagraphs.map((paragraph, idx) => (
+                  <p key={idx}>{paragraph}</p>
+                ))}
+                <p className="font-display text-lg sm:text-xl font-extrabold text-[#7DE8FF] neon-text-blue pt-1">
+                  {event.heroClosingQuestion}
                 </p>
               </div>
 
               {/* Action Buttons */}
-              <div className="mt-7 flex flex-wrap items-center gap-3">
+              <div className="mt-8 flex flex-wrap items-center gap-3">
                 <a
                   href="#rsvp"
                   className="neon-btn-red inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-sm sm:text-base font-extrabold text-white"
                 >
-                  Konfirmasi RSVP
+                  Save Your Spot
                 </a>
                 <a
                   href={calendarUrl}
@@ -259,7 +256,7 @@ export default function InvitationClient({ guestName }: InvitationClientProps) {
                   className="neon-btn-blue inline-flex items-center gap-2 rounded-xl px-5 py-3.5 text-sm sm:text-base font-extrabold text-white"
                 >
                   <CalendarPlus className="h-4 w-4" />
-                  Simpan ke Kalender
+                  Save to Calendar
                 </a>
               </div>
             </div>
@@ -270,10 +267,10 @@ export default function InvitationClient({ guestName }: InvitationClientProps) {
         <section className="text-center space-y-6">
           <div>
             <p className="font-hand text-2xl sm:text-3xl font-bold text-[#FF4D7D] neon-text-red">
-              Hitung Mundur Menuju Hari-H
+              Countdown to the Big Day
             </p>
             <h2 className="mt-1 font-display text-3xl sm:text-4xl font-extrabold text-white neon-text-purple">
-              Jangan Sampai Kelewatan!
+              Don&apos;t Miss Out!
             </h2>
           </div>
           <CountdownTimer targetISO={event.dateISO} />
@@ -283,10 +280,10 @@ export default function InvitationClient({ guestName }: InvitationClientProps) {
         <section id="detail" className="scroll-mt-24 space-y-6">
           <div className="text-center">
             <span className="inline-block rounded-full border border-[#00D4FF]/60 bg-[#00D4FF]/15 text-[#7DE8FF] px-4 py-1 text-xs font-extrabold uppercase tracking-wider shadow-[0_0_16px_rgba(0,212,255,0.3)]">
-              Detail Acara &amp; Lokasi
+              Date &amp; Venue
             </span>
             <h2 className="mt-2 font-display text-3xl sm:text-4xl font-extrabold text-white">
-              Catat Tanggal &amp; Tempatnya
+              Lock It In, Peeps!
             </h2>
           </div>
 
@@ -299,7 +296,7 @@ export default function InvitationClient({ guestName }: InvitationClientProps) {
                 </div>
                 <div>
                   <p className="text-xs font-extrabold uppercase tracking-wider text-[#7DE8FF]">
-                    Tanggal
+                    Date
                   </p>
                   <p className="font-display text-xl font-extrabold text-white mt-0.5">
                     {event.dateDisplay}
@@ -313,7 +310,7 @@ export default function InvitationClient({ guestName }: InvitationClientProps) {
                 </div>
                 <div>
                   <p className="text-xs font-extrabold uppercase tracking-wider text-[#D8B4FE]">
-                    Waktu
+                    Time
                   </p>
                   <p className="font-display text-xl font-extrabold text-white mt-0.5">
                     {event.timeDisplay}
@@ -347,7 +344,7 @@ export default function InvitationClient({ guestName }: InvitationClientProps) {
                 </div>
                 <div>
                   <p className="text-xs font-extrabold uppercase tracking-wider text-[#7DE8FF]">
-                    Lokasi Acara
+                    Venue
                   </p>
                   <h3 className="font-display text-2xl font-extrabold text-white mt-0.5">
                     {event.venueName}
@@ -361,7 +358,7 @@ export default function InvitationClient({ guestName }: InvitationClientProps) {
               {/* Embedded Google Map */}
               <div className="rounded-2xl border border-[#A855F7]/50 overflow-hidden bg-[#09061A] h-56 sm:h-64 shadow-[0_0_20px_rgba(0,212,255,0.15)]">
                 <iframe
-                  title={`Peta lokasi ${event.venueName}`}
+                  title={`Map of ${event.venueName}`}
                   src={`https://maps.google.com/maps?q=${encodeURIComponent(
                     event.mapsEmbedQuery
                   )}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
@@ -379,7 +376,7 @@ export default function InvitationClient({ guestName }: InvitationClientProps) {
                   className="neon-btn-blue flex-1 min-w-[180px] inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-extrabold text-white"
                 >
                   <ExternalLink className="h-4 w-4" />
-                  Buka di Google Maps
+                  Open in Google Maps
                 </a>
                 <button
                   type="button"
@@ -389,12 +386,12 @@ export default function InvitationClient({ guestName }: InvitationClientProps) {
                   {copiedAddress ? (
                     <>
                       <Check className="h-4 w-4 text-[#00D4FF]" />
-                      Tersalin!
+                      Copied!
                     </>
                   ) : (
                     <>
                       <Copy className="h-4 w-4" />
-                      Salin Lokasi
+                      Copy Location
                     </>
                   )}
                 </button>
@@ -403,14 +400,14 @@ export default function InvitationClient({ guestName }: InvitationClientProps) {
           </div>
         </section>
 
-        {/* DO'S & DON'TS AEROXSPACE SECTION */}
+        {/* QUICK BRIEFING — DO'S & DON'TS SECTION (Bahasa Indonesia) */}
         <section id="rules" className="scroll-mt-24 space-y-6">
           <div className="text-center max-w-2xl mx-auto">
             <span className="inline-block rounded-full border border-[#A855F7]/65 bg-[#A855F7]/20 text-[#E9D5FF] px-4 py-1 text-xs font-extrabold uppercase tracking-wider shadow-[0_0_16px_rgba(168,85,247,0.3)]">
-              Panduan Bermain
+              {rules.badge}
             </span>
             <h2 className="mt-2 font-display text-3xl sm:text-4xl font-extrabold text-white">
-              Do&apos;s &amp; Don&apos;ts di AeroXSpace
+              {rules.heading}
             </h2>
           </div>
 
@@ -532,7 +529,11 @@ export default function InvitationClient({ guestName }: InvitationClientProps) {
             </p>
             <div className="space-y-1.5 text-sm sm:text-base text-slate-300 font-medium leading-relaxed max-w-xl mx-auto">
               <p>{rsvpCopy.description1}</p>
-              <p>{rsvpCopy.description2}</p>
+              <p>
+                {rsvpCopy.description2Line1}
+                <br />
+                {rsvpCopy.description2Line2}
+              </p>
             </div>
           </div>
 
@@ -541,22 +542,34 @@ export default function InvitationClient({ guestName }: InvitationClientProps) {
             groupName={internGroup.name}
           />
 
-          <p className="text-center font-hand text-2xl sm:text-3xl font-bold text-[#FF85A5] neon-text-red max-w-xl mx-auto pt-2">
-            {rsvpCopy.closing}
-          </p>
+          <div className="text-center max-w-xl mx-auto pt-2 space-y-1">
+            <p className="font-hand text-2xl sm:text-3xl font-bold text-[#FF85A5] neon-text-red leading-snug">
+              {rsvpCopy.closingLine1}
+            </p>
+            <p className="font-hand text-3xl sm:text-4xl font-bold text-[#7DE8FF] neon-text-blue">
+              {rsvpCopy.closingLine2}
+            </p>
+          </div>
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="mt-20 px-4 text-center">
-        <div className="max-w-md mx-auto neon-card rounded-2xl px-5 py-4">
-          <p className="font-hand text-2xl font-bold text-[#FF4D7D] neon-text-red">
-            See you there!
+      {/* Closing Message & Regards Footer */}
+      <footer className="mt-16 px-4">
+        <div className="max-w-2xl mx-auto neon-card rounded-3xl p-6 sm:p-8 text-center space-y-4">
+          <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-medium">
+            {rsvpCopy.farewellMessage1}
           </p>
-          <p className="mt-1 text-xs font-semibold text-slate-300">
-            Dibuat dengan penuh kenangan oleh {event.hostTeam} untuk{" "}
-            {internGroup.subtitle}
+          <p className="text-sm sm:text-base text-[#E9D5FF] leading-relaxed font-semibold">
+            {rsvpCopy.farewellMessage2}
           </p>
+          <div className="pt-2">
+            <p className="text-xs uppercase tracking-widest text-slate-400 font-bold">
+              {rsvpCopy.regardsLabel}
+            </p>
+            <p className="font-hand text-3xl font-bold text-[#FF85A5] neon-text-red mt-0.5">
+              {rsvpCopy.regardsName}
+            </p>
+          </div>
         </div>
       </footer>
     </div>

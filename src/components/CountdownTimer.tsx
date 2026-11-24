@@ -49,7 +49,7 @@ export default function CountdownTimer({ targetISO }: CountdownTimerProps) {
   if (!timeLeft) {
     return (
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-2xl mx-auto">
-        {["Hari", "Jam", "Menit", "Detik"].map((label, idx) => (
+        {["Days", "Hours", "Minutes", "Seconds"].map((label, idx) => (
           <div
             key={label}
             className={`${BOX_STYLES[idx].card} rounded-2xl p-4 sm:p-5 text-center`}
@@ -72,20 +72,20 @@ export default function CountdownTimer({ targetISO }: CountdownTimerProps) {
     return (
       <div className="neon-card-purple rounded-3xl p-6 sm:p-8 text-center max-w-xl mx-auto">
         <p className="font-display text-2xl sm:text-3xl font-extrabold text-[#00D4FF] neon-text-blue">
-          Waktunya Party Dimulai!
+          Mission Starts Now!
         </p>
         <p className="mt-2 font-medium text-slate-300">
-          Sampai ketemu di lokasi, jangan lupa bawa energi terbaikmu!
+          See you at AeroXSpace — bring your best energy!
         </p>
       </div>
     );
   }
 
   const units = [
-    { label: "Hari", value: timeLeft.days },
-    { label: "Jam", value: timeLeft.hours },
-    { label: "Menit", value: timeLeft.minutes },
-    { label: "Detik", value: timeLeft.seconds },
+    { label: "Days", value: timeLeft.days },
+    { label: "Hours", value: timeLeft.hours },
+    { label: "Minutes", value: timeLeft.minutes },
+    { label: "Seconds", value: timeLeft.seconds },
   ];
 
   return (
