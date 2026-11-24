@@ -20,7 +20,6 @@ export const EVENT_CONFIG = {
 
   // === DETAIL ACARA ===
   event: {
-    badge: "OFFICIAL FAREWELL PARTY",
     coverIntro: "You're Invited,",
     coverTitle: "Viskal Outing!",
     coverExclusivelyFor: "EXCLUSIVELY FOR",

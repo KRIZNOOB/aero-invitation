@@ -13,7 +13,6 @@ import {
   MailOpen,
   MapPin,
   Shirt,
-  Sparkles,
   XCircle,
 } from "lucide-react";
 import { buildGoogleCalendarUrl, EVENT_CONFIG } from "@/config/event";
@@ -109,12 +108,7 @@ export default function InvitationClient({ guestName }: InvitationClientProps) {
           </div>
 
           <div className="neon-card rounded-[2rem] max-w-lg w-full p-7 sm:p-10 text-center relative">
-            <div className="inline-flex items-center gap-1.5 rounded-full border border-[#00D4FF]/60 bg-[#00D4FF]/15 px-4 py-1 text-xs font-extrabold uppercase tracking-wider text-[#7DE8FF] shadow-[0_0_16px_rgba(0,212,255,0.3)]">
-              <Sparkles className="h-3.5 w-3.5" />
-              {event.badge}
-            </div>
-
-            <div className="mt-6">
+            <div>
               <p className="font-hand text-2xl sm:text-3xl font-bold text-[#FF4D7D] neon-text-red -rotate-2">
                 {event.coverIntro}
               </p>
@@ -216,10 +210,6 @@ export default function InvitationClient({ guestName }: InvitationClientProps) {
               )}
 
               <div className="flex flex-wrap items-center gap-2 mb-4">
-                <span className="inline-flex items-center gap-1 rounded-full border border-[#00D4FF]/60 bg-[#00D4FF]/15 px-3.5 py-1 text-xs font-extrabold uppercase tracking-wider text-[#7DE8FF] shadow-[0_0_16px_rgba(0,212,255,0.3)]">
-                  <Sparkles className="h-3.5 w-3.5" />
-                  {event.badge}
-                </span>
                 <span className="inline-flex items-center rounded-full border border-[#A855F7]/65 bg-[#A855F7]/20 text-[#E9D5FF] px-3.5 py-1 text-xs font-extrabold shadow-[0_0_16px_rgba(168,85,247,0.3)]">
                   {internGroup.subtitle}
                 </span>
