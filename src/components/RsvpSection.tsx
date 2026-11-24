@@ -91,20 +91,20 @@ export default function RsvpSection({
               <PartyPopper className="h-8 w-8" />
             </div>
             <h3 className="font-display text-2xl sm:text-3xl font-extrabold text-white neon-text-blue">
-              RSVP Kamu Sudah Tercatat!
+              Your RSVP is Confirmed!
             </h3>
             <p className="text-sm sm:text-base text-slate-300 max-w-md mx-auto">
-              Makasih banyak, <span className="font-bold text-white">{name}</span>!{" "}
+              Thank you so much, <span className="font-bold text-white">{name}</span>!{" "}
               {status === "hadir"
-                ? `Sampai ketemu di acara farewell ${groupName}, ya!`
-                : `Sayang banget belum bisa hadir, tapi semangatnya tetap nyampe ke teman-teman ${groupName}!`}
+                ? "See you at Viskal Outing at AeroXSpace Adventure!"
+                : `We'll miss you at Viskal Outing at AeroXSpace Adventure, and thanks for letting us know!`}
             </p>
             <button
               type="button"
               onClick={() => setSubmitted(false)}
               className="neon-btn-blue inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-bold text-white cursor-pointer"
             >
-              Isi RSVP Lagi
+              Submit Another RSVP
             </button>
           </div>
         ) : (
