@@ -1,11 +1,14 @@
 import { NextResponse } from "next/server";
-import { addRsvp, AttendanceStatus, getRsvps } from "@/lib/rsvp-store";
+import { addRsvp, AttendanceStatus } from "@/lib/rsvp-store";
 
 const VALID_STATUSES: AttendanceStatus[] = ["hadir", "tidak_hadir"];
 
 export async function GET() {
-  const entries = await getRsvps();
-  return NextResponse.json({ total: entries.length });
+  const configured = Boolean(process.env.GOOGLE_SHEETS_WEBHOOK_URL?.trim());
+  return NextResponse.json({
+    ok: true,
+    storage: configured ? "google_sheets" : "local_json",
+  });
 }
 
 export async function POST(request: Request) {
@@ -44,7 +47,8 @@ export async function POST(request: Request) {
     });
 
     return NextResponse.json({ entry }, { status: 201 });
-  } catch {
+  } catch (err) {
+    console.error("[RSVP API Error]", err);
     return NextResponse.json(
       { error: "Gagal menyimpan RSVP. Coba lagi sebentar ya!" },
       { status: 500 }
