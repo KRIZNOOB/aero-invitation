@@ -1,8 +1,7 @@
 export interface RundownItem {
   time: string;
   title: string;
-  description: string;
-  color: "pink" | "yellow" | "mint" | "sky";
+  color: "blue" | "purple" | "red";
 }
 
 export interface RuleItem {
@@ -28,10 +27,10 @@ export const EVENT_CONFIG = {
       "Waktunya kita melepas teman-teman Vintern sebelum melanjutkan petualangan baru! Yuk kumpul, seru-seruan di AeroXSpace, dan bikin kenangan terakhir yang berkesan.",
     hostTeam: "Tim Viskal",
     // Format ISO dengan timezone WITA (+08:00) untuk live countdown
-    dateISO: "2026-12-02T15:00:00+08:00",
-    endISO: "2026-12-02T19:00:00+08:00",
+    dateISO: "2026-12-02T10:00:00+08:00",
+    endISO: "2026-12-02T16:00:00+08:00",
     dateDisplay: "Rabu, 2 Desember 2026",
-    timeDisplay: "15.00 – 19.00 WITA",
+    timeDisplay: "10.00 – 16.00 WITA",
     dressCode: "Pakaian Nyaman / Olahraga",
     dressCodeNote:
       "Gunakan pakaian yang nyaman atau pakaian olahraga agar lebih leluasa bergerak saat bermain!",
@@ -73,37 +72,40 @@ export const EVENT_CONFIG = {
     ] as RuleItem[],
   },
 
-  // === RUNDOWN SINGKAT ===
-  rundown: [
-    {
-      time: "15.00",
-      title: "Kumpul & Registrasi",
-      description:
-        "Absen bareng di AeroXSpace, persiapan perlengkapan, dan pemanasan sebelum main.",
-      color: "yellow",
-    },
-    {
-      time: "15.30",
-      title: "Playtime di AeroXSpace",
-      description:
-        "Seru-seruan nyobain berbagai wahana bareng Vintern dan seluruh tim.",
-      color: "pink",
-    },
-    {
-      time: "17.30",
-      title: "Istirahat, Ngobrol & Speech Singkat",
-      description:
-        "Kesan pesan, nostalgia momen magang, dan penyerahan kenang-kenangan untuk Vintern.",
-      color: "mint",
-    },
-    {
-      time: "18.30",
-      title: "Foto Bareng & Closing",
-      description:
-        "Abadikan momen terakhir bareng Viskal Intern Batch #2 sebelum pulang!",
-      color: "sky",
-    },
-  ] as RundownItem[],
+  // === TIMELINE / RUNDOWN ===
+  timeline: {
+    heading: "WHAT'S THE DAY LOOKING LIKE?",
+    subheading: "A little sneak peek of our day!",
+    items: [
+      {
+        time: "10.00",
+        title: "Meet Up & Prepare for the mission!",
+        color: "blue",
+      },
+      {
+        time: "10.30",
+        title: "Ride, Play & Start the mission!!",
+        color: "purple",
+      },
+      {
+        time: "16.00",
+        title: "Time to Head Home",
+        color: "red",
+      },
+    ] as RundownItem[],
+  },
+
+  // === COPYWRITING RSVP ===
+  rsvpCopy: {
+    heading: "SAVE YOUR SPOT!",
+    lead: "We'd love to have you there!",
+    description1:
+      "Before we get everything ready, let us know if you're joining us.",
+    description2:
+      "Whether it's a YES or a NO, please fill out the RSVP form below so we can prepare everything accordingly.",
+    closing:
+      "Because every goodbye deserves a little celebration. See you there!",
+  },
 };
 
 export function buildGoogleCalendarUrl() {

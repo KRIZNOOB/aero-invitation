@@ -25,12 +25,25 @@ interface InvitationClientProps {
   guestName?: string;
 }
 
-const RUNDOWN_COLOR_MAP = {
-  yellow:
-    "border-[#00D4FF]/65 bg-[#00D4FF]/15 text-[#7DE8FF] shadow-[0_0_16px_rgba(0,212,255,0.35)]",
-  pink: "border-[#FF2A5F]/65 bg-[#FF2A5F]/15 text-[#FF85A5] shadow-[0_0_16px_rgba(255,42,95,0.35)]",
-  mint: "border-[#A855F7]/65 bg-[#A855F7]/20 text-[#D8B4FE] shadow-[0_0_16px_rgba(168,85,247,0.35)]",
-  sky: "border-[#38BDF8]/65 bg-[#38BDF8]/15 text-[#7DD3FC] shadow-[0_0_16px_rgba(56,189,248,0.35)]",
+const TIMELINE_COLOR_MAP = {
+  blue: {
+    badge:
+      "border-[#00D4FF]/70 bg-[#00D4FF]/15 text-[#7DE8FF] shadow-[0_0_18px_rgba(0,212,255,0.4)]",
+    dot: "bg-[#00D4FF] shadow-[0_0_14px_rgba(0,212,255,0.9)]",
+    card: "neon-card-blue",
+  },
+  purple: {
+    badge:
+      "border-[#A855F7]/70 bg-[#A855F7]/20 text-[#E9D5FF] shadow-[0_0_18px_rgba(168,85,247,0.45)]",
+    dot: "bg-[#A855F7] shadow-[0_0_14px_rgba(168,85,247,0.9)]",
+    card: "neon-card-purple",
+  },
+  red: {
+    badge:
+      "border-[#FF2A5F]/70 bg-[#FF2A5F]/15 text-[#FF85A5] shadow-[0_0_18px_rgba(255,42,95,0.45)]",
+    dot: "bg-[#FF2A5F] shadow-[0_0_14px_rgba(255,42,95,0.9)]",
+    card: "neon-card-red",
+  },
 };
 
 const NEON_CONFETTI_COLORS = [
@@ -45,7 +58,7 @@ export default function InvitationClient({ guestName }: InvitationClientProps) {
   const [opened, setOpened] = useState(false);
   const [copiedAddress, setCopiedAddress] = useState(false);
 
-  const { internGroup, event, rules, rundown } = EVENT_CONFIG;
+  const { internGroup, event, rules, timeline, rsvpCopy } = EVENT_CONFIG;
   const calendarUrl = buildGoogleCalendarUrl();
 
   function handleOpenInvitation() {
@@ -458,61 +471,79 @@ export default function InvitationClient({ guestName }: InvitationClientProps) {
           </div>
         </section>
 
-        {/* RUNDOWN SECTION */}
-        <section id="rundown" className="scroll-mt-24 space-y-6">
-          <div className="text-center">
+        {/* TIMELINE SECTION */}
+        <section id="rundown" className="scroll-mt-24 space-y-8">
+          <div className="text-center max-w-2xl mx-auto">
             <span className="inline-block rounded-full border border-[#A855F7]/65 bg-[#A855F7]/20 text-[#E9D5FF] px-4 py-1 text-xs font-extrabold uppercase tracking-wider shadow-[0_0_16px_rgba(168,85,247,0.3)]">
-              Agenda Seru
+              Timeline
             </span>
-            <h2 className="mt-2 font-display text-3xl sm:text-4xl font-extrabold text-white">
-              Mau Ngapain Aja Nanti?
+            <h2 className="mt-3 font-display text-3xl sm:text-4xl font-extrabold text-white tracking-tight neon-text-purple">
+              {timeline.heading}
             </h2>
+            <p className="mt-2 font-hand text-2xl sm:text-3xl font-bold text-[#7DE8FF] neon-text-blue">
+              {timeline.subheading}
+            </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
-            {rundown.map((item) => (
-              <div
-                key={item.time + item.title}
-                className="neon-card rounded-3xl p-5 flex items-start gap-4 hover:-translate-y-1 transition-transform"
-              >
-                <div
-                  className={`shrink-0 rounded-2xl border px-3.5 py-2.5 text-center ${RUNDOWN_COLOR_MAP[item.color]}`}
-                >
-                  <div className="font-display text-sm font-extrabold">
-                    {item.time}
+          <div className="max-w-2xl mx-auto relative pl-7 sm:pl-9 space-y-5">
+            {/* Glowing vertical timeline line */}
+            <div
+              aria-hidden="true"
+              className="absolute left-2.5 sm:left-3.5 top-4 bottom-4 w-0.5 bg-gradient-to-b from-[#00D4FF] via-[#A855F7] to-[#FF2A5F] shadow-[0_0_12px_rgba(168,85,247,0.8)]"
+            />
+
+            {timeline.items.map((item) => {
+              const style = TIMELINE_COLOR_MAP[item.color];
+              return (
+                <div key={item.time + item.title} className="relative">
+                  <span
+                    aria-hidden="true"
+                    className={`absolute -left-[25px] sm:-left-[29px] top-1/2 -translate-y-1/2 h-3.5 w-3.5 rounded-full border-2 border-[#070514] ${style.dot}`}
+                  />
+                  <div
+                    className={`${style.card} rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5 hover:-translate-y-0.5 transition-transform`}
+                  >
+                    <span
+                      className={`self-start sm:self-auto shrink-0 rounded-xl border px-3.5 py-1.5 font-display text-sm sm:text-base font-extrabold tabular-nums ${style.badge}`}
+                    >
+                      {item.time}
+                    </span>
+                    <h3 className="font-display text-lg sm:text-xl font-extrabold text-white leading-snug">
+                      {item.title}
+                    </h3>
                   </div>
                 </div>
-                <div>
-                  <h3 className="font-display text-lg font-extrabold text-white">
-                    {item.title}
-                  </h3>
-                  <p className="mt-1 text-sm text-slate-300 leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
 
         {/* RSVP SECTION */}
-        <section id="rsvp" className="scroll-mt-24 space-y-6">
-          <div className="text-center max-w-xl mx-auto">
+        <section id="rsvp" className="scroll-mt-24 space-y-7">
+          <div className="text-center max-w-2xl mx-auto space-y-3">
             <span className="inline-block rounded-full border border-[#FF2A5F]/65 bg-[#FF2A5F]/15 text-[#FF85A5] px-4 py-1 text-xs font-extrabold uppercase tracking-wider shadow-[0_0_16px_rgba(255,42,95,0.3)]">
-              Konfirmasi Kehadiran
+              RSVP
             </span>
-            <h2 className="mt-2 font-display text-3xl sm:text-4xl font-extrabold text-white">
-              Ikut Meramaikan, Yuk!
+            <h2 className="font-display text-3xl sm:text-5xl font-extrabold text-white tracking-tight neon-text-red">
+              {rsvpCopy.heading}
             </h2>
-            <p className="mt-2 text-sm sm:text-base text-slate-300 font-medium">
-              Bantu isi RSVP di bawah biar kita gampang atur tiket dan persiapan di AeroXSpace.
+            <p className="font-hand text-2xl sm:text-3xl font-bold text-[#7DE8FF] neon-text-blue">
+              {rsvpCopy.lead}
             </p>
+            <div className="space-y-1.5 text-sm sm:text-base text-slate-300 font-medium leading-relaxed max-w-xl mx-auto">
+              <p>{rsvpCopy.description1}</p>
+              <p>{rsvpCopy.description2}</p>
+            </div>
           </div>
 
           <RsvpSection
             defaultName={guestName}
             groupName={internGroup.name}
           />
+
+          <p className="text-center font-hand text-2xl sm:text-3xl font-bold text-[#FF85A5] neon-text-red max-w-xl mx-auto pt-2">
+            {rsvpCopy.closing}
+          </p>
         </section>
       </main>
 
