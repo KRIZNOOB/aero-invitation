@@ -15,19 +15,19 @@ const STATUS_OPTIONS: {
   label: string;
   activeClass: string;
 }[] = [
-  {
-    value: "hadir",
-    label: "Hadir",
-    activeClass:
-      "bg-[#00D4FF]/20 border-[#00D4FF] text-[#7DE8FF] shadow-[0_0_20px_rgba(0,212,255,0.45)]",
-  },
-  {
-    value: "tidak_hadir",
-    label: "Tidak Hadir",
-    activeClass:
-      "bg-[#FF2A5F]/20 border-[#FF2A5F] text-[#FF85A5] shadow-[0_0_20px_rgba(255,42,95,0.45)]",
-  },
-];
+    {
+      value: "hadir",
+      label: "Hadir",
+      activeClass:
+        "bg-[#00D4FF]/20 border-[#00D4FF] text-[#7DE8FF] shadow-[0_0_20px_rgba(0,212,255,0.45)]",
+    },
+    {
+      value: "tidak_hadir",
+      label: "Tidak Hadir",
+      activeClass:
+        "bg-[#FF2A5F]/20 border-[#FF2A5F] text-[#FF85A5] shadow-[0_0_20px_rgba(255,42,95,0.45)]",
+    },
+  ];
 
 export default function RsvpSection({
   defaultName = "",
@@ -114,7 +114,7 @@ export default function RsvpSection({
                 htmlFor="rsvp-name"
                 className="block text-sm font-bold text-slate-200 mb-1.5"
               >
-                Nama Lengkap / Panggilan *
+                Nama Panggilan *
               </label>
               <input
                 id="rsvp-name"
@@ -139,11 +139,10 @@ export default function RsvpSection({
                       key={opt.value}
                       type="button"
                       onClick={() => setStatus(opt.value)}
-                      className={`inline-flex items-center justify-center gap-2 rounded-xl border px-4 py-3 text-sm font-bold transition-all cursor-pointer ${
-                        isActive
+                      className={`inline-flex items-center justify-center gap-2 rounded-xl border px-4 py-3 text-sm font-bold transition-all cursor-pointer ${isActive
                           ? `${opt.activeClass} -translate-y-0.5`
                           : "border-white/15 bg-[#09061A]/70 text-slate-300 hover:border-[#A855F7]/60"
-                      }`}
+                        }`}
                     >
                       {opt.value === "hadir" ? (
                         <CheckCircle2 className="h-4 w-4" />
