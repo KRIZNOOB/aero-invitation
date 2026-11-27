@@ -143,10 +143,6 @@ export default function InvitationClient({ guestName }: InvitationClientProps) {
               <MailOpen className="h-5 w-5" />
               {event.coverCta}
             </button>
-
-            <p className="mt-4 text-xs font-medium text-slate-400">
-              {event.dateDisplay} • {event.venueName}
-            </p>
           </div>
         </main>
       </>
